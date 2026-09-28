@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="KoliShop - Boutique en ligne au Burkina Faso">
+<title>KoliShop — Boutique en ligne</title>
+<style>
+:root{--blue:#123b9b;--blue2:#2563eb;--dark:#0f172a;--light:#f5f7fb;--green:#16a34a;--orange:#f59e0b;--red:#dc2626;--card:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--light);color:#172033}
+header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0002}
+.nav{max-width:1150px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:18px}
+.logo{font-size:25px;font-weight:800;flex:1}.logo span{font-size:30px}
+nav a{color:#fff;text-decoration:none;margin:0 7px;font-size:14px}
+.cart{background:#fff;color:#111;border:0;border-radius:25px;padding:12px 17px;font-weight:700;cursor:pointer}
+.hero{background:linear-gradient(135deg,#123b9b,#2563eb);color:#fff;padding:55px 18px}
+.hero-in{max-width:1150px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero h1{font-size:48px;margin:0 0 16px}.hero p{font-size:19px;line-height:1.6}
+.hero img{width:100%;border-radius:22px;display:block;box-shadow:0 15px 40px #0004}
+.btn{display:inline-block;border:0;border-radius:12px;padding:13px 18px;font-weight:700;cursor:pointer;text-decoration:none}
+.btn-primary{background:#fff;color:#123b9b}.btn-green{background:var(--green);color:#fff}.btn-blue{background:var(--blue2);color:#fff}.btn-red{background:var(--red);color:#fff}
+section{max-width:1150px;margin:0 auto;padding:42px 18px}h2{font-size:31px;margin-top:0}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 4px 18px #00000012}
+.card img{width:100%;height:210px;object-fit:cover}.card-body{padding:18px}.price{font-size:22px;font-weight:800;color:var(--blue);margin:8px 0 14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.tag{background:#e9efff;color:#123b9b;padding:6px 10px;border-radius:20px;font-size:12px}
+.video{background:#0b1220;color:#fff;border-radius:20px;padding:15px}.video video{width:100%;border-radius:14px;max-height:480px;background:#000}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{background:#fff;border-radius:16px;padding:18px;text-align:center;box-shadow:0 3px 14px #0001}
+.panel{background:#fff;border-radius:18px;padding:22px;box-shadow:0 4px 18px #0001}
+.payments{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.pay{border:2px solid #e5e7eb;border-radius:13px;padding:15px;text-align:center;cursor:pointer;background:#fff}.pay.active{border-color:var(--blue2);background:#eef4ff}
+form{display:grid;gap:12px}input,select,textarea{width:100%;padding:13px;border:1px solid #d1d5db;border-radius:10px;font-size:15px}textarea{min-height:100px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.review{background:#fff;padding:18px;border-radius:16px}
+footer{background:var(--dark);color:#fff;padding:35px 18px}.foot{max-width:1150px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}.foot a{color:#cbd5e1;text-decoration:none;display:block;margin:8px 0}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;padding:20px;overflow:auto}.modal-box{background:#fff;max-width:650px;margin:30px auto;border-radius:20px;padding:24px}.close{float:right;border:0;background:#eee;border-radius:50%;width:36px;height:36px;cursor:pointer}
+.notice{background:#fff7ed;border-left:5px solid var(--orange);padding:14px;border-radius:10px;margin:15px 0}
+.small{font-size:13px;color:#64748b}
+@media(max-width:800px){.hero-in,.grid2{grid-template-columns:1fr}.hero h1{font-size:37px}.products{grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr}.payments{grid-template-columns:1fr 1fr}.reviews{grid-template-columns:1fr}.foot{grid-template-columns:1fr}nav{display:none}}
+@media(max-width:500px){.products{grid-template-columns:1fr}.hero{padding:35px 15px}}
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<div class="logo"><span>🛍️</span> KoliShop</div>
+<nav><a href="#produits">Produits</a><a href="#paiement">Paiement</a><a href="#livraison">Livraison</a><a href="#retours">Retours</a><a href="#contact">Contact</a></nav>
+<button class="cart" onclick="openCart()">🛒 Panier (<span id="count">0</span>)</button>
+</div>
+</header>
+
+<div class="hero">
+<div class="hero-in">
+<div>
+<h1>Bienvenue chez KoliShop</h1>
+<p>Une boutique en ligne au Burkina Faso pour découvrir des produits et services, commander facilement et recevoir sa commande.</p>
+<a class="btn btn-primary" href="#produits">Découvrir les produits</a>
+<a class="btn btn-green" href="https://wa.me/22654499187?text=Bonjour%20KoliShop%2C%20je%20veux%20des%20informations." target="_blank">💬 WhatsApp</a>
+</div>
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85" alt="Boutique en ligne">
+</div>
+</div>
+
+<section>
+<div class="features">
+<div class="feature">📦<h3>Livraison</h3><p>Ouagadougou et autres zones selon disponibilité.</p></div>
+<div class="feature">💳<h3>Paiement</h3><p>Choisissez votre mode de paiement.</p></div>
+<div class="feature">🔄<h3>Retour</h3><p>Demande de retour et remboursement.</p></div>
+<div class="feature">📱<h3>WhatsApp</h3><p>Commande et assistance rapide.</p></div>
+</div>
+</section>
+
+<section id="produits">
+<h2>🛍️ Nos produits et services</h2>
+<div class="products" id="productList"></div>
+</section>
+
+<section>
+<h2>🎬 Petite vidéo</h2>
+<div class="video">
+<p>Présentation vidéo — remplace cette vidéo par ta propre vidéo de produits lorsque tu l'auras.</p>
+<video controls muted poster="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80">
+<source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+Votre navigateur ne peut pas lire la vidéo.
+</video>
+</div>
+</section>
+
+<section id="paiement">
+<h2>💳 Modes de paiement</h2>
+<div class="panel">
+<div class="payments">
+<div class="pay" onclick="selectPay(this,'Orange Money')">🟠<br><b>Orange Money</b></div>
+<div class="pay" onclick="selectPay(this,'Moov Money')">🟢<br><b>Moov Money</b></div>
+<div class="pay" onclick="selectPay(this,'Coris Money')">🏦<br><b>Coris Money</b></div>
+<div class="pay" onclick="selectPay(this,'Visa / Mastercard')">💳<br><b>Visa / Mastercard</b></div>
+<div class="pay" onclick="selectPay(this,'Paiement à la livraison')">💵<br><b>À la livraison</b></div>
+</div>
+<div class="notice"><b>Important :</b> les paiements électroniques seront réellement encaissés uniquement après connexion d'un compte marchand ou d'une passerelle de paiement. KoliShop ne demande jamais votre code secret ou votre PIN par WhatsApp.</div>
+<p id="paySelected" class="small">Aucun mode sélectionné.</p>
+</div>
+</section>
+
+<section id="livraison">
+<h2>🚚 Livraison</h2>
+<div class="panel">
+<form onsubmit="sendDelivery(event)">
+<input id="clientName" required placeholder="Nom complet">
+<input id="phone" required placeholder="Téléphone / WhatsApp">
+<input id="address" required placeholder="Ville et adresse de livraison">
+<select id="delivery"><option>Livraison à domicile</option><option>Point de rendez-vous</option><option>Retrait en personne</option></select>
+<button class="btn btn-green" type="submit">Confirmer les informations</button>
+</form>
+</div>
+</section>
+
+<section id="retours">
+<h2>🔄 Retours & remboursements</h2>
+<div class="grid2">
+<div class="panel">
+<h3>Demander un retour ou remboursement</h3>
+<form onsubmit="sendRefund(event)">
+<input id="orderRef" required placeholder="Numéro de commande">
+<select id="reason"><option>Produit défectueux</option><option>Produit différent de la commande</option><option>Produit endommagé à la livraison</option><option>Autre motif</option></select>
+<textarea id="details" required placeholder="Expliquez votre demande"></textarea>
+<button class="btn btn-red" type="submit">Envoyer la demande</button>
+</form>
+</div>
+<div class="panel">
+<h3>📋 Processus</h3>
+<p>1️⃣ Demande reçue</p><p>2️⃣ Vérification de la commande</p><p>3️⃣ Retour accepté ou refusé selon les conditions</p><p>4️⃣ Produit retourné si nécessaire</p><p>5️⃣ Remboursement selon le moyen de paiement disponible</p>
+<p class="small">Les délais et conditions doivent être définis selon le produit vendu et les règles applicables.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>⭐ Avis clients</h2>
+<div class="reviews">
+<div class="review">⭐⭐⭐⭐⭐<br><b>Client KoliShop</b><p>Interface simple et commande par WhatsApp.</p></div>
+<div class="review">⭐⭐⭐⭐⭐<br><b>Client KoliShop</b><p>Je peux voir les informations avant de commander.</p></div>
+<div class="review">⭐⭐⭐⭐⭐<br><b>Client KoliShop</b><p>Livraison et paiement à préciser avec le vendeur.</p></div>
+</div>
+</section>
+
+<section id="contact">
+<h2>📞 Contact</h2>
+<div class="panel">
+<p><b>WhatsApp 1 :</b> +226 54 49 91 87</p>
+<p><b>WhatsApp 2 :</b> +226 69 99 00 19</p>
+<a class="btn btn-green" href="https://wa.me/22654499187?text=Bonjour%20KoliShop" target="_blank">💬 Écrire sur WhatsApp</a>
+</div>
+</section>
+
+<footer>
+<div class="foot">
+<div><h2>KoliShop 🇧🇫</h2><p>Boutique en ligne au Burkina Faso.</p><p class="small">Version boutique : produits, commandes, livraison, paiements, retours et remboursements.</p></div>
+<div><h3>Navigation</h3><a href="#produits">Produits</a><a href="#paiement">Paiement</a><a href="#retours">Remboursements</a></div>
+<div><h3>Contact</h3><a href="https://wa.me/22654499187" target="_blank">WhatsApp 1</a><a href="https://wa.me/22669990019" target="_blank">WhatsApp 2</a></div>
+</div>
+</footer>
+
+<div class="modal" id="cartModal">
+<div class="modal-box">
+<button class="close" onclick="closeCart()">×</button>
+<h2>🛒 Mon panier</h2>
+<div id="cartItems"></div>
+<p><b>Total : <span id="total">0</span> F CFA</b></p>
+<button class="btn btn-green" onclick="orderWhatsApp()">Commander sur WhatsApp</button>
+</div>
+</div>
+
+<script>
+const products=[
+{name:"Affiche publicitaire",price:2000,img:"https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80",desc:"Création d'une affiche professionnelle."},
+{name:"Montage vidéo",price:5000,img:"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80",desc:"Montage vidéo pour réseaux sociaux."},
+{name:"Logo personnalisé",price:5000,img:"https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80",desc:"Création d'un logo pour votre activité."},
+{name:"Création de site web",price:25000,img:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",desc:"Site vitrine ou boutique selon vos besoins."},
+{name:"Pack réseaux sociaux",price:10000,img:"https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&w=800&q=80",desc:"Contenus et visuels pour réseaux sociaux."},
+{name:"Service IA",price:15000,img:"https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",desc:"Accompagnement pour créer avec l'IA."}
+];
+let cart=[],selectedPayment="";
+function render(){
+const box=document.getElementById("productList");
+box.innerHTML=products.map((p,i)=>`<article class="card"><img src="${p.img}" alt="${p.name}"><div class="card-body"><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${p.price.toLocaleString("fr-FR")} F CFA</div><div class="tags"><span class="tag">🇧🇫 Burkina Faso</span><span class="tag">WhatsApp</span></div><button class="btn btn-blue" onclick="add(${i})">Ajouter au panier</button></div></article>`).join("");
+}
+function add(i){cart.push(products[i]);updateCount();alert("Produit ajouté au panier.");}
+function updateCount(){document.getElementById("count").textContent=cart.length;}
+function openCart(){document.getElementById("cartModal").style.display="block";document.getElementById("cartItems").innerHTML=cart.length?cart.map((p,i)=>`<p>${p.name} — ${p.price.toLocaleString("fr-FR")} F CFA <button onclick="removeItem(${i})">✕</button></p>`).join(""):"<p>Votre panier est vide.</p>";document.getElementById("total").textContent=cart.reduce((s,p)=>s+p.price,0).toLocaleString("fr-FR");}
+function closeCart(){document.getElementById("cartModal").style.display="none";}
+function removeItem(i){cart.splice(i,1);updateCount();openCart();}
+function selectPay(el,name){document.querySelectorAll(".pay").forEach(x=>x.classList.remove("active"));el.classList.add("active");selectedPayment=name;document.getElementById("paySelected").textContent="Mode sélectionné : "+name;}
+function orderWhatsApp(){if(!cart.length){alert("Votre panier est vide.");return;}let total=cart.reduce((s,p)=>s+p.price,0);let msg="Bonjour KoliShop 👋%0AJe souhaite commander :%0A"+cart.map(p=>"- "+p.name+" : "+p.price+" F CFA").join("%0A")+"%0ATotal : "+total+" F CFA%0AMode de paiement : "+(selectedPayment||"à préciser");location.href="https://wa.me/22654499187?text="+encodeURIComponent(decodeURIComponent(msg));}
+function sendRefund(e){e.preventDefault();let ref=document.getElementById("orderRef").value,reason=document.getElementById("reason").value,details=document.getElementById("details").value;let msg=`Bonjour KoliShop, je demande un retour/remboursement.%0ACommande : ${ref}%0AMotif : ${reason}%0ADétails : ${details}`;location.href="https://wa.me/22654499187?text="+encodeURIComponent(decodeURIComponent(msg));}
+function sendDelivery(e){e.preventDefault();let n=document.getElementById("clientName").value,p=document.getElementById("phone").value,a=document.getElementById("address").value,d=document.getElementById("delivery").value;let msg=`Bonjour KoliShop, voici mes informations de livraison.%0ANom : ${n}%0ATéléphone : ${p}%0AAdresse : ${a}%0AType : ${d}`;location.href="https://wa.me/22654499187?text="+encodeURIComponent(decodeURIComponent(msg));}
+render();
+</script>
+</body>
+</html>
